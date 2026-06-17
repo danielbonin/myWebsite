@@ -1,18 +1,13 @@
-name: Deploy to Proxmox
+name: Deploy Locally
 on:
   push:
     branches: [ main ]
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # This tells GitHub to use your Proxmox runner
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO --delete"
-          SOURCE: "."
-          REMOTE_HOST: "192.168.1.111"
-          REMOTE_USER: "root"
-          TARGET: "/var/lib/vz/my-website/"
+      - name: Copy files to web directory
+        run: |
+          # Rsync copies files from the runner's workspace to your mount point
+          rsync -av --delete --exclude='.git' . /var/lib/vz/my-website/
