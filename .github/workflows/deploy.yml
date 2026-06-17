@@ -4,10 +4,10 @@ on:
     branches: [ main ]
 jobs:
   deploy:
-    runs-on: self-hosted  # This tells GitHub to use your Proxmox runner
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - name: Copy files to web directory
         run: |
-          # Use sudo to ensure the runner has permission to write to the host folder
-          sudo rsync -av --delete --exclude='.git' . /var/lib/vz/my-website/
+          # Remove 'sudo' - it is no longer needed because you own the folder!
+          rsync -av --delete --exclude='.git' . /var/lib/vz/my-website/
