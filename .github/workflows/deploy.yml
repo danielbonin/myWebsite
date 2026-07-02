@@ -1,13 +1,35 @@
-name: Deploy Locally
+name: Deploy Portfolio with Eleventy
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      [ main ]
+
 jobs:
-  deploy:
-    runs-on: self-hosted
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Copy files to web directory
-        run: |
-          # Remove 'sudo' - it is no longer needed because you own the folder!
-          rsync -av --delete --exclude='.git' . /var/lib/vz/my-website/
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-size: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Compile Eleventy Site
+        run: npx @11ty/eleventy --output=_site
+
+      - name: Deploy to Caddy Container via SSH
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rlgoDzvO --delete"
+          SOURCE: "_site/" # Only copies the compiled HTML output
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }} # Your tunnel address
+          REMOTE_USER: root
+          TARGET: "/var/www/html" # Target inside Caddy
