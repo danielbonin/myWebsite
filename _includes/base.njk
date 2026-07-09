@@ -10,14 +10,16 @@
 	<body class="{{ bodyClass or 'is-preload' }}">
 		<div id="page-wrapper">
 
-			<!-- 1. Header & Navigation (Included dynamically) -->
-			{% include "partials/header.njk" %}
+			
+
+
+			<!-- 1. Navigation & Name(Included dynamically) -->
+			{% include "partials/name_nav.njk" %}
+
 
 			<!-- 2. Unique Page Content (Injected here) -->
 			<div id="main-wrapper">
-				<div class="container">
 					{{ content | safe }}
-				</div>
 			</div>
 
 			<!-- 3. Footer (Included dynamically) -->
