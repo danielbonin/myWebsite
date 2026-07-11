@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<njk lang="en">
+	<head>
+		<title>{{ title }} | Daniel Bonin</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+	<body class="{{ bodyClass or 'is-preload' }}">
+		<div id="page-wrapper">
+			
+		<!-- 1. Header & Navigation wrapper (Coral Background) -->
+		<section id="header" class="wrapper">
+			{% include "partials/name_nav.njk" %}
+		</section>
+
+		<!-- 2. Unique Page Content (Rendered as independent sibling blocks) -->
+		{{ content | safe }}
+
+		<!-- 3. Footer (Included dynamically) -->
+		{% include "partials/footer.njk" %}
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
+	</body>
+</html>
