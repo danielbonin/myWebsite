@@ -9,30 +9,26 @@
 	</head>
 	<body class="{{ bodyClass or 'is-preload' }}">
 		<div id="page-wrapper">
-
 			
+		<!-- 1. Header & Navigation wrapper (Coral Background) -->
+		<section id="header" class="wrapper">
+			{% include "partials/nav.njk" %}
+		</section>
 
+		<!-- 2. Unique Page Content (Rendered as independent sibling blocks) -->
+		{{ content | safe }}
 
-			<!-- 1. Navigation & Name(Included dynamically) -->
-			{% include "partials/name_nav.njk" %}
+		<!-- 3. Footer (Included dynamically) -->
+		{% include "partials/footer.njk" %}
 
+	</div>
 
-			<!-- 2. Unique Page Content (Injected here) -->
-			<div id="main-wrapper">
-					{{ content | safe }}
-			</div>
-
-			<!-- 3. Footer (Included dynamically) -->
-			{% include "partials/footer.njk" %}
-
-		</div>
-
-		<!-- Scripts -->
-		<script src="/assets/js/jquery.min.js"></script>
-		<script src="/assets/js/jquery.dropotron.min.js"></script>
-		<script src="/assets/js/browser.min.js"></script>
-		<script src="/assets/js/breakpoints.min.js"></script>
-		<script src="/assets/js/util.js"></script>
-		<script src="/assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
 	</body>
 </html>

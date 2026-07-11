@@ -9,44 +9,52 @@
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
-
+			
+		<!-- 1. Header & Navigation wrapper (Coral Background) -->
+		<section id="header" class="wrapper">
 			
 
-
-			<!-- 1. Navigation & Name(Included dynamically) -->
-			<section id="header" class="wrapper">
-
+<!-- 1. Navigation Bar -->
 <nav id="nav">
-    <ul>
-        <li class="current"><a href="/index">About Me</a></li>
-        <li>
-            <a href="#main">Work Experience</a>
-            <ul>
-                <li><a href="#">System Operations</a></li>
-                <li><a href="#">Cybersecurity</a></li>
-                <li><a href="#">IT Helpdesk</a></li>
-                <li><a href="#">Customer Service</a></li>
-            </ul>
-        </li>
-        <li><a href="#highlights">Projects</a></li>
-        <li><a href="/blog_landing_page">Blog</a></li>
-        <li><a href="/resume">Resume</a></li>
-    </ul>
+	<ul>
+		<li class="current"><a href="/">About Me</a></li>
+		<li>
+			<a href="/#main">Work Experience</a>
+			<ul>
+				<li><a href="#">System Operations</a></li>
+				<li><a href="#">Cybersecurity</a></li>
+				<li><a href="#">IT Helpdesk</a></li>
+				<li><a href="#">Customer Service</a></li>
+			</ul>
+		</li>
+		<li><a href="/#highlights">Projects</a></li>
+		<li><a href="/blog_landing_page/">Blog</a></li>
+		<li><a href="/resume/">Resume</a></li>
+	</ul>
 </nav>
 
-<!-- Logo -->
-    <div id="logo">
-        <h1><a href="index.html">Daniel Bonin</a></h1>
-        <p>IT Professional & Cybersecurity Specialist</p>
-        <br />
-        <h1>I'm currently working on this site!</h1>
-    </div>
-</section>
+<!-- 2. Name Section -->
+<div id="logo" style="margin-top: 1.5em;">
 
 
-			<!-- 2. Unique Page Content (Injected here) -->
-			<div id="main-wrapper">
-					
+	<!-- Name & Subtitle Title -->
+	<h1><a href="/">Daniel Bonin</a></h1>
+	<p style="font-size: 1.15em; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; margin-top: 0.25em;">
+		IT Professional & Cybersecurity Specialist
+	</p>
+
+	<!-- Stylized Under-Construction Tag -->
+	<div class="status-banner" style="display: inline-block; background: rgba(255,255,255,0.08); border: 2px dashed rgba(255,255,255,0.25); border-radius: 28px; padding: 22px 24px; margin-top: 1.5em; max-width: 90%;">
+		<p style="margin: 0; font-size: 1.95em; font-weight: 500; color: #fff; letter-spacing: 1px;">
+			<i class="icon solid fa-tools" style="margin-right: 18px; color: #ffffff;"></i>SITE UNDER ACTIVE CONSTRUCTION <i class="icon solid fa-tools"  color: #ffffff;"></i>
+		</p>
+	</div>
+
+</div>
+		</section>
+
+		<!-- 2. Unique Page Content (Rendered as independent sibling blocks) -->
+		
 
 <!-- 1. Intro Section Banner -->
 <section id="intro" class="wrapper style1">
@@ -54,68 +62,92 @@
     <div class="container">
         <p class="style1">System Operations, Cybersecurity, IT Helpdesk, and Customer Service</p>
         <p class="style2">
-            Hi, I'm Dan! I help bring understanding to technology and seamless user experiences.<br class="mobile-hide" />
+            Hi, I'm Dan<br />
+            Find out more about me!
         </p>
-        <p class="style3">With a diverse background in <strong>System Operations</strong> and <strong>Cybersecurity</strong>, I build and protect robust network infrastructures. I pair this technical expertise with years of <strong>IT Helpdesk</strong> and <strong>Customer Service</strong> experience, ensuring that systems not only run securely but that the people using them feel fully supported. Whether I'm mitigating a security threat or walking a client through a troubleshooting process, my goal is always efficiency, safety, and satisfaction.</p>
         <ul class="actions">
-            <li><a href="#main" class="button style3 large">View My Expertise</a></li>
+            <li><a href="fis.njk" class="button style3 large">View My Expertise</a></li>
         </ul>
+        <p></p>
+
+        <p class="style3">With a diverse background in <strong>System Operations</strong> and <strong>Cybersecurity</strong>, I build and protect robust network infrastructures. I pair this technical expertise with years of <strong>IT Helpdesk</strong> and <strong>Customer Service</strong> experience, ensuring that systems not only run securely but that the people using them feel fully supported. Whether I'm mitigating a security threat or walking a client through a troubleshooting process, my goal is always efficiency, safety, and satisfaction.</p>
     </div>
+    
 </section>
 
 <!-- 2. Main Wrapper Section (Central Content) -->
-
-
-<!-- Main (Work Experience / Core Competencies) -->
 <section id="main" class="wrapper style2">
-    <div class="title">Work Experience</div>
-    <div class="container">
+<div class="title">Work Experience</div>
+<div class="container">
+    <div class="row aln-center">
+        <div class="col-4 col-12-medium">
+            <section class="job">
+                <a href="fis.njk" class="image featured"><img src="images/fis.png" alt="FIS" /></a>
+                <h3 style="text-align: center;">FIS | Systems Operations Engineer | 4 years</h3>
+            </section>
+        </div>
+        <div class="col-4 col-12-medium">
+            <section class="job">
+                <a href="doit.njk" class="image featured"><img src="images/doit.png" alt="doit"/></a>
+                <h3 style="text-align: center;">UW Madison | DoIT Helpdesk Software Developer and Support Specialist | 3 years</h3>
+            </section>
+        </div>
+        <div class="col-4 col-12-medium">
+            <section class="job">
+            <a href="target.njk" class="image featured"><img src="images/target.png" alt="target" /></a>
+                <h3 style="text-align: center;">Target | Electronics Department | 4 years</h3>
+            </section>
+        </div>
+                
+    </div>
+</div>
 
-        <!-- Image -->
-            <a href="#" class="image featured">
-                <img src="images/pic01.jpg" alt="Daniel's Work Environment" />
-            </a>
+</section>
 
-        <!-- Features -->
-            <section id="features">
-                <header class="style1">
-                    <h2>My Core Competencies</h2>
-                    <p>Delivering comprehensive IT solutions seamlessly to the end-user.</p>
-                </header>
-                <div class="feature-list">
-                    <div class="row">
-                        <div class="col-6 col-12-medium">
-                            <section>
-                                <h3 class="icon solid fa-server">System Operations</h3>
-                                <p>Managed and maintained enterprise-level server environments. Focused on minimizing downtime, optimizing system performance, automating routine administrative tasks, and ensuring operational efficiency.</p>
-                            </section>
-                        </div>
-                        <div class="col-6 col-12-medium">
-                            <section>
-                                <h3 class="icon solid fa-shield-alt">Cybersecurity</h3>
-                                <p>Implemented security protocols to defend against vulnerabilities and data breaches. Conducted regular threat assessments, network monitoring, and educated staff on best practices for data safety.</p>
-                            </section>
-                        </div>
-                        <div class="col-6 col-12-medium">
-                            <section>
-                                <h3 class="icon solid fa-laptop-medical">IT Helpdesk</h3>
-                                <p>Provided Tier 1 and Tier 2 technical support for hardware and software issues. Streamlined ticketing systems to improve response times and efficiently resolved daily technical blockers for end-users.</p>
-                            </section>
-                        </div>
-                        <div class="col-6 col-12-medium">
-                            <section>
-                                <h3 class="icon solid fa-users">Customer Service</h3>
-                                <p>Translated complex technical jargon into clear, actionable advice for non-technical clients. Maintained a high satisfaction rating by approaching every interaction with patience and a problem-solving mindset.</p>
-                            </section>
-                        </div>
+
+<div class="container">
+
+
+    <!-- Features -->
+        <section id="features">
+            <header class="style1">
+                <h2>My Core Competencies</h2>
+                <p>Delivering comprehensive IT solutions seamlessly to the end-user.</p>
+            </header>
+            <div class="feature-list">
+                <div class="row">
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <h3 class="icon solid fa-server">System Operations</h3>
+                            <p>Managed and maintained enterprise-level server environments. Focused on minimizing downtime, optimizing system performance, automating routine administrative tasks, and ensuring operational efficiency.</p>
+                        </section>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <h3 class="icon solid fa-shield-alt">Cybersecurity</h3>
+                            <p>Implemented security protocols to defend against vulnerabilities and data breaches. Conducted regular threat assessments, network monitoring, and educated staff on best practices for data safety.</p>
+                        </section>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <h3 class="icon solid fa-laptop-medical">IT Helpdesk</h3>
+                            <p>Provided Tier 1 and Tier 2 technical support for hardware and software issues. Streamlined ticketing systems to improve response times and efficiently resolved daily technical blockers for end-users.</p>
+                        </section>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <h3 class="icon solid fa-users">Customer Service</h3>
+                            <p>Translated complex technical jargon into clear, actionable advice for non-technical clients. Maintained a high satisfaction rating by approaching every interaction with patience and a problem-solving mindset.</p>
+                        </section>
                     </div>
                 </div>
-                <ul class="actions special">
-                    <li><a href="resume.njk" class="button style1 large">Download Resume</a></li>
-                </ul>
-            </section>
+            </div>
+            <ul class="actions special">
+                <li><a href="resume.njk" class="button style1 large">Download Resume</a></li>
+            </ul>
+        </section>
 
-    </div>
+</div>
 </section>
 
 
@@ -158,10 +190,9 @@
         </div>
     </div>
 </section>
-			</div>
 
-			<!-- 3. Footer (Included dynamically) -->
-			<!-- Footer Wrapper (Outermost Layer) -->
+		<!-- 3. Footer (Included dynamically) -->
+		<!-- Footer Wrapper (Outermost Layer) -->
 <section id="footer" class="wrapper">
 	<div class="title">Get In Touch</div>
 	<div class="container">
@@ -241,14 +272,14 @@
 </section>
 
 
-		</div>
+	</div>
 
-		<!-- Scripts -->
-		<script src="/assets/js/jquery.min.js"></script>
-		<script src="/assets/js/jquery.dropotron.min.js"></script>
-		<script src="/assets/js/browser.min.js"></script>
-		<script src="/assets/js/breakpoints.min.js"></script>
-		<script src="/assets/js/util.js"></script>
-		<script src="/assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
 	</body>
 </html>
