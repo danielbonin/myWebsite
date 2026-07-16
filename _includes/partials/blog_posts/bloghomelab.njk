@@ -1,0 +1,79 @@
+<!-- Main blog content for Blog Homelab -->
+<section id="main" class="wrapper style2">
+	<div class="title">Blog Homelab</div>
+	<div class="container">
+		<div class="row gtr-150">
+			<div class="col-8 col-12-medium">
+
+				<div id="content">
+					<article class="box post">
+						<header class="style1">
+							<h2>Building a Secure, Automated Home Lab: Proxmox, pfSense, and Cloudflare Tunnels</h2>
+							<p>My journey converting an old laptop into a segmented, Zero-Trust web hosting environment.</p>
+						</header>
+
+
+						<!-- remove pic for now
+						<a class="image featured" href="#">
+							<img src="/images/banner.jpg" alt="home lab banner" />
+						</a>
+						-->
+
+						<p>I wanted a safe way to self-host my portfolio and learn enterprise tooling without exposing my personal network. I built a layered environment using a bare-metal hypervisor, a virtualized firewall, secure tunneling, and automated deployments.</p>
+
+						<h3>Proxmox Virtual Environment (Hypervisor)</h3>
+						<p>Instead of running services on one OS, I installed Proxmox on an old laptop. Proxmox lets me run isolated virtual machines and lightweight containers to host apps. I created virtual network bridges so that the lab network is logically and physically separated from my home Wi‑Fi.</p>
+
+						<h3>pfSense (Firewall)</h3>
+						<p>I deployed pfSense as a VM to enforce strict, stateful firewall rules. Web-facing services are placed in an isolated subnet; if a container is compromised, the attacker cannot reach my management interfaces or personal devices.</p>
+
+						<h3>Cloudflare Tunnels (Reverse Proxy and Secure Tunneling)</h3>
+						<p>To avoid opening inbound ports on my home router, I run cloudflared in a dedicated container. It creates an outbound tunnel to Cloudflare’s edge, routing HTTPS traffic securely to my internal web server. My public IP stays hidden and the home router's firewall remains closed to inbound traffic.</p>
+
+						<!--
+						<figure>
+							<img src="/images/pic01.jpg" alt="proxmox setup" />
+							<figcaption>Proxmox lab host and container layout.</figcaption>
+						</figure>
+						-->
+
+						<h3>Caddy & GitHub Actions (CI/CD Pipeline)</h3>
+						<p>I host the site on a container running Caddy. To reduce risk, pfSense blocks that container from general internet traffic. It only accepts traffic through the Cloudflare tunnel initiated to it. A GitHub Actions workflow pushes updates to a self-hosted runner in the lab, which deploys changes automatically to the website.</p>
+
+						<h3>The Result</h3>
+						<p>By combining a hypervisor, a virtual firewall, egress filtering, container isolation, and automated deployments, I built a robust, production-like hosting environment at home. This setup taught me a great deal of networking principles and keeps my network secure.</p>
+
+
+					</article>
+				</div>
+
+			</div>
+			<div class="col-4 col-12-medium">
+				<div id="sidebar">
+					<section class="box">
+						<header>
+							<h2>Quick Links</h2>
+						</header>
+						<ul class="style2">
+							<li><a href="/blog_landing_page/">All blog posts</a></li>
+							<li><a href="/bloghomelab/">This post</a></li>
+							<li><a href="/resume/">Resume</a></li>
+						</ul>
+					</section>
+					<section class="box">
+						<header>
+							<h2>Resources</h2>
+						</header>
+						<ul class="style3">
+							<li><a href="https://www.proxmox.com">Proxmox VE</a></li>
+							<li><a href="https://www.pfsense.org">pfSense</a></li>
+							<li><a href="https://www.cloudflare.com/products/tunnel/">Cloudflare Tunnel</a></li>
+							<li><a href="https://caddyserver.com">Caddy</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <style>
+    .box { fill:#ffffff; stroke:#2b2b2b; stroke-width:2; rx:6; }
+    .cloud { fill:#e6f0ff; stroke:#2b6cff; stroke-width:2; rx:18; }
+    .text { font-family: Arial, Helvetica, sans-serif; font-size:14px; fill:#111; }
+    .title { font-weight:700; font-size:16px }
+    .arrow { stroke:#2b2b2b; stroke-width:2; marker-end:url(#arrowhead); }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2b2b2b" />
+    </marker>
+  </defs>
+
+  <!-- Cloud / Internet -->
+  <g transform="translate(480,20)">
+    <rect class="cloud" x="-120" y="0" width="240" height="60" rx="18"/>
+    <text class="text title" x="0" y="36" text-anchor="middle">Internet / Cloudflare Edge</text>
+  </g>
+
+  <!-- ISP / Modem -->
+  <g transform="translate(200,120)">
+    <rect class="box" x="0" y="0" width="160" height="56" />
+    <text class="text" x="80" y="32" text-anchor="middle">ISP / Modem</text>
+  </g>
+
+  <!-- Home Router -->
+  <g transform="translate(460,120)">
+    <rect class="box" x="0" y="0" width="160" height="56" />
+    <text class="text" x="80" y="32" text-anchor="middle">Home Router (Default Deny)</text>
+  </g>
+
+  <!-- Proxmox Host -->
+  <g transform="translate(460,240)">
+    <rect class="box" x="0" y="0" width="300" height="160" />
+    <text class="text title" x="150" y="26" text-anchor="middle">Proxmox Host (Old Laptop)</text>
+
+    <!-- pfSense VM -->
+    <rect x="14" y="46" width="120" height="40" class="box" />
+    <text class="text" x="74" y="74" text-anchor="middle">pfSense (Firewall)</text>
+
+    <!-- cloudflared container -->
+    <rect x="164" y="46" width="120" height="40" class="box" />
+    <text class="text" x="224" y="74" text-anchor="middle">cloudflared (Tunnel)</text>
+
+    <!-- Caddy web server -->
+    <rect x="14" y="106" width="270" height="40" class="box" />
+    <text class="text" x="149" y="134" text-anchor="middle">Caddy (Web server + reverse proxy)</text>
+  </g>
+
+  <!-- Personal Device (isolated) -->
+  <g transform="translate(820,240)">
+    <rect class="box" x="0" y="40" width="180" height="70" />
+    <text class="text" x="90" y="74" text-anchor="middle">Personal PC (Isolated)</text>
+  </g>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M360,150 L460,150" />
+  <path class="arrow" d="M640,80 L600,80" />
+  <path class="arrow" d="M520,120 L520,200" />
+  <path class="arrow" d="M760,260 L760,240" />
+  <path class="arrow" d="M760,260 L760,200" />
+
+  <!-- Arrow from Cloud to cloudflared -->
+  <path class="arrow" d="M480,80 L520,120" />
+
+  <!-- Arrow from pfSense to Caddy (internal only) -->
+  <path class="arrow" d="M520,180 L490,180" />
+
+  <!-- Labels near arrows -->
+  <text class="text" x="410" y="120">WAN</text>
+  <text class="text" x="560" y="170">Isolated LAN (Web)</text>
+
+  <!-- Footer note -->
+  <text class="text" x="600" y="580" text-anchor="end">Architecture diagram — segmented home-lab with Cloudflare Tunnel</text>
+</svg>
