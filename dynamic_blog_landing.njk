@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: Cybersecurity Blog
+bodyClass: homepage is-preload
+---
+
+<section id="main" class="wrapper style2">
+    <div class="title">My Cybersecurity Blog</div>
+    <div class="container">
+        <div class="row gtr-150">
+            
+            <div class="col-8 col-12-medium">
+                <div id="content">
+                    
+                    {% if collections.posts and collections.posts.length > 0 %}
+                        {% for post in collections.posts | reverse %}
+                            <article class="box post" style="margin-bottom: 3em; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 3em;">
+                                <header class="style1">
+                                    <h2 style="font-size: 1.8em; margin-bottom: 0.25em;">
+                                        <a href="{{ post.url }}">{{ post.data.title }}</a>
+                                    </h2>
+                                    <p style="font-style: italic; color: #777; font-size: 0.95em;">
+                                        Written on {{ post.date.toDateString() if post.date else "Recently" }} | Topic: {{ post.data.topic or "Cybersecurity" }}
+                                    </p>
+                                </header>
+                                
+                                {% if post.data.image %}
+                                    <div class="image featured" style="margin-bottom: 1.5em; text-align: center;">
+                                        <a href="{{ post.url }}">
+                                            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" style="max-width: 100%; height: auto; border-radius: 6px; display: block; margin: 0 auto;" />
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                
+                                <p>
+                                    {{ post.data.subtitle or post.data.description or "Read the full article to learn more about this project." }}
+                                </p>
+                                
+                                <ul class="actions" style="display: flex; justify-content: center; list-style: none; padding: 0; margin: 1.5em 0 0 0;">
+                                    <li style="padding: 0;"><a href="{{ post.url }}" class="button style1">Read Full Article</a></li>
+                                </ul>
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                        <div class="box post" style="text-align: center; padding: 4em 0;">
+                            <i class="icon solid fa-folder-open" style="font-size: 3em; color: #ccc; margin-bottom: 0.5em; display: block;"></i>
+                            <h3>No blog posts published yet. Stay tuned!</h3>
+                            <p style="color: #777;">I am currently drafting up write-ups for my home lab projects.</p>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="col-4 col-12-medium">
+                <div id="sidebar">
+                    
+                    <section class="box">
+                        <header>
+                            <h2>Navigation</h2>
+                        </header>
+                        <ul class="style2">
+                            <li><a href="/">About Me / Homepage</a></li>
+                            <li><a href="/resume/">My Interactive Resume</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="box">
+                        <header>
+                            <h2>Tools I Used</h2>
+                        </header>
+                        <ul class="style3">
+                            <li><a href="https://www.proxmox.com" target="_blank">Proxmox VE</a></li>
+                            <li><a href="https://www.pfsense.org" target="_blank">pfSense</a></li>
+                            <li><a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a></li>
+                            <li><a href="https://caddyserver.com" target="_blank">Caddy Server</a></li>
+                        </ul>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

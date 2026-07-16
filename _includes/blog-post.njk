@@ -1,0 +1,64 @@
+---
+layout: base.njk
+---
+
+<!-- Main blog content template -->
+<section id="main" class="wrapper style2">
+    <div class="title">{{ topic or "Blog Post" }}</div>
+    <div class="container">
+        <div class="row gtr-150">
+            
+            <!-- Left Column: The actual written Markdown post -->
+            <div class="col-8 col-12-medium">
+                <div id="content">
+                    <article class="box post">
+                        <header class="style1">
+                            <h2>{{ title }}</h2>
+                            <p style="font-style: italic; color: #777; margin-bottom: 1.5em;">
+                                Published on {{ date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) if date else "Recently" }}
+                            </p>
+                        </header>
+
+                        <!-- Eleventy automatically compiles your Markdown and injects it here -->
+                        <div class="markdown-content">
+                            {{ content | safe }}
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Right Column: Reusable Sidebar -->
+            <div class="col-4 col-12-medium">
+                <div id="sidebar">
+                    
+                    <!-- Quick Links Box -->
+                    <section class="box">
+                        <header>
+                            <h2>Quick Links</h2>
+                        </header>
+                        <ul class="style2">
+                            <li><a href="/dynamic_blog_landing/">All blog posts</a></li>
+                            <li><a href="/resume/">Resume</a></li>
+                        </ul>
+                    </section>
+
+                    <!-- Dynamic Resources Box (Only shows if resources are listed in the Markdown front matter) -->
+                    {% if resources %}
+                    <section class="box">
+                        <header>
+                            <h2>Resources</h2>
+                        </header>
+                        <ul class="style3">
+                            {% for name, url in resources %}
+                            <li><a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
