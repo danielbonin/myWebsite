@@ -2,7 +2,7 @@
 
 <njk lang="en">
 	<head>
-		<title>DNS Sinkhole | Daniel Bonin</title>
+		<title>Audio Guestbook | Daniel Bonin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
@@ -35,7 +35,7 @@
 		<!-- 2. Unique Page Content (Rendered as independent sibling blocks) -->
 		<!-- Main blog content for Blog Homelab --> 
 <section id="main" class="wrapper style2"> 
-    <div class="title">DNS Sinkhole</div> 
+    <div class="title">Computer Engineering</div> 
     <div class="container"> 
         <div class="row gtr-150"> 
             
@@ -44,8 +44,8 @@
                 <div id="content"> 
                     <article class="box post"> 
                         <header class="style1"> 
-                            <h2>DNS Sinkhole</h2> 
-                            <p>Configuring and testing a DNS sinkhole on my home network using a Raspberry Pi</p>
+                            <h2>Audio Guestbook</h2> 
+                            <p>Raspberry pi connected to physical telephone</p>
                             <!-- Date Stamp -->
                             <p style="font-size: 0.9em; color: rgba(255,255,255,0.65); margin-top: -1em; margin-bottom: 2em;">
                                 <i class="icon solid fa-calendar" style="margin-right: 6px;"></i> 
@@ -58,21 +58,16 @@
                         
                         
                         <span class="image" style="margin: 0 auto 2.5em auto; overflow: hidden; border-radius: 8px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.2em;  height: 300px; max-height: 300px; max-width: 1000px;">
-                            <img src="/images/pihole.png" alt="DNS Sinkhole" style="max-height: 100% !important; max-width: 100% !important; width: auto !important; height: auto !important; object-fit: contain;" />
+                            <img src="/images/guestbook.png" alt="Audio Guestbook" style="max-height: 100% !important; max-width: 100% !important; width: auto !important; height: auto !important; object-fit: contain;" />
                         </span>
                         
 
                         <!-- Page Content dynamically compiled from Markdown -->
                         <div class="entry-content">
                             <h3>Introduction</h3>
-<p>I previously purchased a raspberry Pi Zero 2 W that was used for another project (<a href="../audio_guestbook">Audio Guestbook</a>). Since then I was able to take the information from it and store it, freeing up this device for more projects! The one I was the most interested in was setting up a DNS sinkhole on my home network to avoid watching advertisements. Little did I know there were going to be a few hurdles in the way.</p>
-<h3>The ISP...</h3>
-<p>Spectrum routers don't actually let you use your own DNS server if it can't find the site your device is looking for. What that means is that when I set the primary and secondary IP for DNS to point to the pihole device, the connection request will go to pihole's DNS server, say no site found, but spectrum router will still send it through their DNS server to find the appropriate site. This just acts as a throughpoint for your traffic instead of the dead end that we want to achieve. The next step is to get our own router.</p>
-<h3>New router setup</h3>
-<p>Initial setup as 192.168.1.1 for router internet IP. JAIL. Completely blocked devices from communicating with router. Patched in using laptop to set dynamic ip.
-New problem, DHCP config is set to be on subnet 192.168.0.1/24 making all devices that were previously on network as 192.168.1.1/24 set statically stop functioning. Configuration ensued, needed for CI/CD pipeline settings, updated Firewall rules from my PC and pfSense gateway.</p>
-<h3>The way ads are served</h3>
-<p>After all that</p>
+<h3>Pi configuration</h3>
+<h3>Hardware limitations</h3>
+<h3>Making hardware and software be friendly towards one another</h3>
 
                         </div>
 
@@ -104,8 +99,10 @@ New problem, DHCP config is set to be on subnet 192.168.0.1/24 making all device
                         </header>
                         <ul class="style2">
                             
-                                <li><a href="/posts/audio_guestbook/"><strong>Previous:</strong> Audio Guestbook</a></li>
+                                <li><a href="/posts/homelab/"><strong>Previous:</strong> Homelab journey: Proxmox, pfSense, and Cloudflare Tunnels</a></li>
                             
+                            
+                                <li><a href="/posts/pihole/"><strong>Next:</strong> DNS Sinkhole</a></li>
                             
                         </ul>
                     </section>
