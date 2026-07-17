@@ -1,64 +1,93 @@
 ---
 layout: base.njk
 ---
-
-<!-- Main blog content template -->
-<section id="main" class="wrapper style2">
-    <div class="title">{{ topic or "Blog Post" }}</div>
-    <div class="container">
-        <div class="row gtr-150">
+<!-- Main blog content for Blog Homelab --> 
+<section id="main" class="wrapper style2"> 
+    <div class="title">{{ topic or "Cybersecurity Blog" }}</div> 
+    <div class="container"> 
+        <div class="row gtr-150"> 
             
-            <!-- Left Column: The actual written Markdown post -->
-            <div class="col-8 col-12-medium">
-                <div id="content">
-                    <article class="box post">
-                        <header class="style1">
-                            <h2>{{ title }}</h2>
-                            <p style="font-style: italic; color: #777; margin-bottom: 1.5em;">
-                                Published on {{ date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) if date else "Recently" }}
+            <!-- Left Column: Dynamic Post Content -->
+            <div class="col-8 col-12-medium"> 
+                <div id="content"> 
+                    <article class="box post"> 
+                        <header class="style1"> 
+                            <h2>{{ title }}</h2> 
+                            <p>{{ subtitle }}</p>
+                            <!-- Date Stamp -->
+                            <p style="font-size: 0.9em; color: rgba(255,255,255,0.65); margin-top: -1em; margin-bottom: 2em;">
+                                <i class="icon solid fa-calendar" style="margin-right: 6px;"></i> 
+                                Published on {{ date | postDate }} 
                             </p>
-                        </header>
+                        </header> 
 
-                        <!-- Eleventy automatically compiles your Markdown and injects it here -->
-                        <div class="markdown-content">
+                        <!-- Dynamic Featured Header Image with Smart Object-Fitting -->
+                        {% if image %}
+                        {% set imgPath = image.path if image.path else image %}
+                        {% set imgAlt = image.alt if image.alt else title %}
+                        <span class="image" style="margin: 0 auto 2.5em auto; overflow: hidden; border-radius: 8px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.2em;  height: 300px; max-height: 300px; max-width: 1000px;">
+                            <img src="{{ imgPath }}" alt="{{ imgAlt }}" style="max-height: 100% !important; max-width: 100% !important; width: auto !important; height: auto !important; object-fit: contain;" />
+                        </span>
+                        {% endif %}
+
+                        <!-- Page Content dynamically compiled from Markdown -->
+                        <div class="entry-content">
                             {{ content | safe }}
                         </div>
-                    </article>
-                </div>
-            </div>
 
-            <!-- Right Column: Reusable Sidebar -->
-            <div class="col-4 col-12-medium">
-                <div id="sidebar">
+                    </article> 
+                </div> 
+            </div> 
+
+            <!-- Right Column: Reusable Smart Sidebar -->
+            <div class="col-4 col-12-medium"> 
+                <div id="sidebar"> 
                     
-                    <!-- Quick Links Box -->
+                    <!-- Dynamic Navigation Links -->
+                    <section class="box"> 
+                        <header> 
+                            <h2>Quick Links</h2> 
+                        </header> 
+                        <ul class="style2"> 
+                            <li><a href="/dynamic_blog_landing"><i class="icon solid fa-arrow-left" style="margin-right: 8px;"></i> All blog posts</a></li> 
+                        </ul> 
+                    </section> 
+
+                    <!-- Dynamic Post Relational Navigation -->
+                    {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+                    {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+                    {% if previousPost or nextPost %}
                     <section class="box">
                         <header>
-                            <h2>Quick Links</h2>
+                            <h2>Browse Posts</h2>
                         </header>
                         <ul class="style2">
-                            <li><a href="/dynamic_blog_landing/">All blog posts</a></li>
-                            <li><a href="/resume/">Resume</a></li>
-                        </ul>
-                    </section>
-
-                    <!-- Dynamic Resources Box (Only shows if resources are listed in the Markdown front matter) -->
-                    {% if resources %}
-                    <section class="box">
-                        <header>
-                            <h2>Resources</h2>
-                        </header>
-                        <ul class="style3">
-                            {% for name, url in resources %}
-                            <li><a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ name }}</a></li>
-                            {% endfor %}
+                            {% if previousPost %}
+                                <li><a href="{{ previousPost.url }}"><strong>Previous:</strong> {{ previousPost.data.title }}</a></li>
+                            {% endif %}
+                            {% if nextPost %}
+                                <li><a href="{{ nextPost.url }}"><strong>Next:</strong> {{ nextPost.data.title }}</a></li>
+                            {% endif %}
                         </ul>
                     </section>
                     {% endif %}
 
-                </div>
-            </div>
+                    <!-- Reusable Static Resources List -->
+                    {% if resources %}
+                    <section class="box"> 
+                        <header> 
+                            <h2>Resources</h2> 
+                        </header> 
+                        <ul class="style3"> 
+                            {% for name, url in resources %}
+                                <li><a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ name }}</a></li> 
+                            {% endfor %}
+                        </ul> 
+                    </section> 
+                    {% endif %}
 
-        </div>
-    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div> 
 </section>

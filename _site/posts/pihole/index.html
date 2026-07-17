@@ -2,7 +2,7 @@
 
 <njk lang="en">
 	<head>
-		<title>Homelab journey: Proxmox, pfSense, and Cloudflare Tunnels | Daniel Bonin</title>
+		<title>DNS Sinkhole | Daniel Bonin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
@@ -35,7 +35,7 @@
 		<!-- 2. Unique Page Content (Rendered as independent sibling blocks) -->
 		<!-- Main blog content for Blog Homelab --> 
 <section id="main" class="wrapper style2"> 
-    <div class="title">Homelab Architecture</div> 
+    <div class="title">DNS Sinkhole</div> 
     <div class="container"> 
         <div class="row gtr-150"> 
             
@@ -44,12 +44,12 @@
                 <div id="content"> 
                     <article class="box post"> 
                         <header class="style1"> 
-                            <h2>Homelab journey: Proxmox, pfSense, and Cloudflare Tunnels</h2> 
-                            <p>My journey converting an old laptop into a segmented web hosting environment.</p>
+                            <h2>DNS Sinkhole</h2> 
+                            <p>Configuring and testing a DNS sinkhole on my home network using a Raspberry Pi</p>
                             <!-- Date Stamp -->
                             <p style="font-size: 0.9em; color: rgba(255,255,255,0.65); margin-top: -1em; margin-bottom: 2em;">
                                 <i class="icon solid fa-calendar" style="margin-right: 6px;"></i> 
-                                Published on July 16, 2026 
+                                Published on July 17, 2026 
                             </p>
                         </header> 
 
@@ -58,23 +58,14 @@
                         
                         
                         <span class="image" style="margin: 0 auto 2.5em auto; overflow: hidden; border-radius: 8px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.2em;  height: 300px; max-height: 300px; max-width: 1000px;">
-                            <img src="/images/proxmox_logo.png" alt="Homelab journey: Proxmox, pfSense, and Cloudflare Tunnels" style="max-height: 100% !important; max-width: 100% !important; width: auto !important; height: auto !important; object-fit: contain;" />
+                            <img src="/images/pihole.png" alt="DNS Sinkhole" style="max-height: 100% !important; max-width: 100% !important; width: auto !important; height: auto !important; object-fit: contain;" />
                         </span>
                         
 
                         <!-- Page Content dynamically compiled from Markdown -->
                         <div class="entry-content">
-                            <p>I wanted a safe way to self-host my portfolio and learn enterprise tooling without exposing my personal network. I built a layered environment using a bare-metal hypervisor, a virtualized firewall, secure tunneling, and automated deployments.</p>
-<h3>Proxmox Virtual Environment (Hypervisor)</h3>
-<p>Instead of running services on one OS, I installed Proxmox on an old laptop. Proxmox lets me run isolated virtual machines and lightweight containers to host apps. I created virtual network bridges so that the lab network is logically and physically separated from my home Wi‑Fi.</p>
-<h3>pfSense (Firewall)</h3>
-<p>I deployed pfSense as a VM to enforce strict, stateful firewall rules. Web-facing services are placed in an isolated subnet; if a container is compromised, the attacker cannot reach my management interfaces or personal devices.</p>
-<h3>Cloudflare Tunnels (Reverse Proxy and Secure Tunneling)</h3>
-<p>To avoid opening inbound ports on my home router, I run <code>cloudflared</code> in a dedicated container. It creates an outbound tunnel to Cloudflare’s edge, routing HTTPS traffic securely to my internal web server. My public IP stays hidden and the home router's firewall remains closed to inbound traffic.</p>
-<h3>Caddy &amp; GitHub Actions (CI/CD Pipeline)</h3>
-<p>I host the site on a container running Caddy. To reduce risk, pfSense blocks that container from general internet traffic. It only accepts traffic through the Cloudflare tunnel initiated to it. A GitHub Actions workflow pushes updates to a self-hosted runner in the lab, which deploys changes automatically to the website.</p>
-<h3>Everything working together</h3>
-<p>By combining a hypervisor, a virtual firewall, egress filtering, container isolation, and automated deployments, I built a robust, production-like hosting environment at home. This setup taught me a great deal of networking principles and keeps my network secure.</p>
+                            <h3>TEST</h3>
+<p>this is a test</p>
 
                         </div>
 
@@ -106,31 +97,14 @@
                         </header>
                         <ul class="style2">
                             
+                                <li><a href="/posts/homelab/"><strong>Previous:</strong> Homelab journey: Proxmox, pfSense, and Cloudflare Tunnels</a></li>
                             
-                                <li><a href="/posts/pihole/"><strong>Next:</strong> DNS Sinkhole</a></li>
                             
                         </ul>
                     </section>
                     
 
                     <!-- Reusable Static Resources List -->
-                    
-                    <section class="box"> 
-                        <header> 
-                            <h2>Resources</h2> 
-                        </header> 
-                        <ul class="style3"> 
-                            
-                                <li><a href="https://www.proxmox.com" target="_blank" rel="noopener noreferrer">Proxmox VE</a></li> 
-                            
-                                <li><a href="https://www.pfsense.org" target="_blank" rel="noopener noreferrer">pfSense</a></li> 
-                            
-                                <li><a href="https://www.cloudflare.com/products/tunnel/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a></li> 
-                            
-                                <li><a href="https://caddyserver.com" target="_blank" rel="noopener noreferrer">Caddy</a></li> 
-                            
-                        </ul> 
-                    </section> 
                     
 
                 </div> 

@@ -13,6 +13,7 @@ resources:
   pfSense: "https://www.pfsense.org"
   Cloudflare Tunnel: "https://www.cloudflare.com/products/tunnel/"
   Caddy: "https://caddyserver.com"
+image: "/images/proxmox_logo.png"
 ---
 
 I wanted a safe way to self-host my portfolio and learn enterprise tooling without exposing my personal network. I built a layered environment using a bare-metal hypervisor, a virtualized firewall, secure tunneling, and automated deployments.
@@ -33,6 +34,6 @@ To avoid opening inbound ports on my home router, I run `cloudflared` in a dedic
 
 I host the site on a container running Caddy. To reduce risk, pfSense blocks that container from general internet traffic. It only accepts traffic through the Cloudflare tunnel initiated to it. A GitHub Actions workflow pushes updates to a self-hosted runner in the lab, which deploys changes automatically to the website.
 
-### The Result
+### Everything working together
 
 By combining a hypervisor, a virtual firewall, egress filtering, container isolation, and automated deployments, I built a robust, production-like hosting environment at home. This setup taught me a great deal of networking principles and keeps my network secure.
